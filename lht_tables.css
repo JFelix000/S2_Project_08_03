@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+/*
+   New Perspectives on HTML and CSS, 7th Edition
+   Tutorial 6
+   Case Problem 3
+
+   Calendar Style Sheet
+   Author: Jose Felix
+   Date:   10.12.18
+
+   Filename:   lht_tables.css
+
+*/
+
+/* ===============================
+   Mobile Styles: 0px to 640px 
+   ===============================
+*/
+@media only screen and (max-width: 640px) {
+   table, tbody, tr, td, th, caption {
+      display: block;
+   }
+   h1, thead tr th, colgroup {
+      display: none;
+   }
+   table#calendar caption {
+      color: white;
+      background: rgb(95, 94, 94);
+      font-size: 1.5em;
+      line-height: 2em;
+   }
+   td {
+      border: 1px dotted grey;
+      color:  rgb(11, 12, 145);
+      position: relative;
+      padding-left: 40%;
+      min-height: 40px;
+   }
+   /* The keyword odd could make this thing go away and that helps a ton */
+   tr:nth-of-type(odd) {
+      background: rgb(255, 235, 178);
+      border: 2px solid grey;
+   }
+   td::before {
+      /* This took a lot of research as well, here I needed to use content: attr(whatever attribute) for the CSS to read what I was trying to say here. This makes it present that content for that specific attr. Position has coords you can think of left as in x and top as in y; since it is (0,0) it was no trouble to figure that out */
+      content: attr(date-date);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40%;
+      padding: 5px;
+   }
+}
+
+/* =============================================
+   Tablet and Desktop Styles: greater than 640px
+   =============================================
+*/
+@media only screen and (min-width: 641px) {
+   /* When it said no tiling it really meant no repear and so thats what I did here. The margin is written in shorthand and the table layout is fixed so that it doesn't change at all. */
+   table {
+      background: url(lht_photo1.png) bottom right;
+      background-repeat: no-repeat;
+      background-size: 40%;
+      border: rgb(154, 64, 3) double 6px;
+      border-color: rgb(154, 64, 3);
+      border-collapse: collapse;
+      margin: 20px auto;
+      table-layout: fixed;
+      width: 85%;
+   }
+   th, td {
+      border: 1px solid grey;
+      font-size: .85em;
+      background: rgb(154, 64, 3);
+      color: white;
+      font-weight: normal;
+      padding: 5px;
+      vertical-align: top;
+      width: 14.28%;
+      word-wrap: break-word;
+   }
+   td {
+      background:  rgba(171, 171, 171, 0.6);
+      color:  rgb(11, 12, 145);
+   }
+   /* This just took a bit of research here I needed to have this for [attribute~=word] so that it could pick up a specific that I wanted in the attribute */
+   [date-date~=Feb] {
+      background: rgba(232, 214, 148, 0.6);
+      box-shadow: grey 0px 0px 20px inset;
+   }
+   table#calendar caption {
+      vertical-align: center;
+      padding-bottom: 10px;
+      font-size: 1.2em;
+      letter-spacing: 3px;
+      color: rgb(11, 12, 145);
+   }
+   thead th {
+      background:  rgb(154, 64, 3);
+      color: white;
+   }
+}

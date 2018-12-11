@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+/*
+   New Perspectives on HTML and CSS, 7th Edition
+   Tutorial 6
+   Case Problem 3
+
+   Columns Style Sheet
+   Author: Jose Felix
+   Date:   10.12.18
+
+   Filename:   lht_columns.css
+
+*/
+
+
+
+/* Column Styles */
+article {
+   /* I have to have all of the extensions so that other browsers will render them so that is why these have 3 similar things each. */
+   column-width: 260px;
+   -webkit-column-width: 260px;
+   -moz-column-width: 260px;
+
+   column-gap: 20px;
+   -webkit-column-gap: 20px;
+   -moz-column-gap: 20px;
+
+   column-rule: 1px solid rgb(154, 64, 31);
+   -moz-column-rule: 1px solid rgb(154, 64, 31);
+   -webkit-column-rule: 1px solid rgb(154, 64, 31);
+}
+article h1 {
+   /* There is no value that you can give it it has to be all or none */
+   -moz-column-span: all;
+   column-span: all;
+
+   widows: 2;
+   orphans: 2;
+}
